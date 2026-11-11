@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alumnos</title>
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+  <div class="contenedor">
+    <div class="tarjeta">
+      <div class="encabezado">
+        <h1>Alumnos y su escuela</h1>
+        <a class="btn btn-nuevo" th:href="@{/alumnos/nuevo}">+ Nuevo alumno</a>
+      </div>
+
+      <div class="mensaje" th:if="${mensaje}" th:text="${mensaje}"></div>
+
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Nombre</th><th>Matrícula</th><th>Escuela</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+          <tr th:each="a : ${alumnos}">
+            <td th:text="${a.id}"></td>
+            <td th:text="${a.nombre}"></td>
+            <td th:text="${a.matricula}"></td>
+            <td th:text="${a.escuelaNombre}"></td>
+            <td>
+              <div class="acciones">
+                <a class="btn btn-editar" th:href="@{/alumnos/{id}/editar(id=${a.id})}">Modificar</a>
+                <form th:action="@{/alumnos/{id}/eliminar(id=${a.id})}" method="post"
+                      onsubmit="return confirm('¿Eliminar a este alumno?');">
+                  <button type="submit" class="btn btn-eliminar">Eliminar</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="vacio" th:if="${#lists.isEmpty(alumnos)}">Aún no hay alumnos registrados.</p>
+    </div>
+  </div>
+</body>
+</html>

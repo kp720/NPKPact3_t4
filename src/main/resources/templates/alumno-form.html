@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${titulo}">Nuevo alumno</title>
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+  <div class="contenedor">
+    <div class="tarjeta">
+      <h1 th:text="${titulo}">Alumno</h1>
+
+      <form th:action="@{${accion}}" th:object="${alumno}" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required>
+
+        <label for="matricula">Matrícula</label>
+        <input type="text" id="matricula" th:field="*{matricula}" required>
+
+        <label for="escuelaId">Escuela</label>
+        <select id="escuelaId" th:field="*{escuelaId}" required>
+          <option value="">-- Selecciona una escuela --</option>
+          <option th:each="e : ${escuelas}" th:value="${e.id}" th:text="${e.nombre}"></option>
+        </select>
+
+        <div class="botones-form">
+          <button type="submit" class="btn btn-guardar">Guardar</button>
+          <a class="btn btn-cancelar" th:href="@{/alumnos}">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
