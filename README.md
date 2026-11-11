@@ -8,7 +8,7 @@ Pagina web con CRUD completo de **Alumnos** conectado a una base de datos MySQL,
 
 - **Proyecto en el VPS (puerto 2755):** http://94.130.98.27:2755/alumnos
 - **API en el VPS:** http://94.130.98.27:2755/api/alumnos
-- **Colección de Postman:** [docs/coleccion-act3.json](docs/coleccion-act3.json)
+- **Colección de Postman:** [docs/json/coleccion-act3.json](docs/json/coleccion-act3.json)
 
 Las Actividades 1 y 2 siguen corriendo en sus puertos originales (2750 y 2753), sin verse afectadas.
 
